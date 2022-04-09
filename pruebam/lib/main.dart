@@ -6,6 +6,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+  static const String _title = 'Flutter Code Sample';
 
   // This widget is the root of your application.
   @override
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Demo APP'),
     );
   }
 }
@@ -45,6 +46,7 @@ class MyHomePage extends StatefulWidget {
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
+
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -63,6 +65,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final ButtonStyle style =
+        ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -102,6 +106,17 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            ElevatedButton(
+            style: style,
+            onPressed: null,
+            child: const Text('Disabled'),
+          ),
+          const SizedBox(height: 30),
+          ElevatedButton(
+            style: style,
+            onPressed: () {}, 
+            child: const Icon(Icons.account_balance),
+          ),
           ],
         ),
       ),
@@ -110,6 +125,40 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key? key}) : super(key: key);
+
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  @override
+  Widget build(BuildContext context) {
+    final ButtonStyle style =
+        ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
+
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          ElevatedButton(
+            style: style,
+            onPressed: null,
+            child: const Text('Disabled'),
+          ),
+          const SizedBox(height: 30),
+          ElevatedButton(
+            style: style,
+            onPressed: () {},
+            child: const Text('Enabled'),
+          ),
+        ],
+      ),
     );
   }
 }
